@@ -129,7 +129,6 @@ public class UsuarioServicioImpl implements InUsuarioServicio{
         Usuario usuario = usuarioDao.findById(usu.getIdUsu()).orElseThrow(() -> new NoSuchElementException("El usuario con identificación " + usu.getIdUsu() + " no existe en la base de datos"));
 
         if(usuario.getIdUsu() != null){
-            usuario.setCorreoUsu(usu.getCorreoUsu());
             usuario.setContraseniaUsu(usu.getContraseniaUsu());
             usuario.setNombreUsu(usu.getNombreUsu());
             usuario.setFotoUsu(usu.getFotoUsu());
