@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -80,6 +81,25 @@ public class BusesServiciolmpl implements InBusServicio {
         return respuesta;
     }
 
+    //Metodo modificar bus
+    @Override
+        public String actualizarBus(Bus bus1){
+        String respuesta = "{'respuesta' : 'No se realizo la actualizacion del bus'}";
+
+        Bus bus= busDao.findById(bus1.getPlacaBus())
+                .orElseThrow(() -> new NoSuchElementException("El Bus identificado con la placa " + bus1.getPlacaBus() + " no existe en la base de datos"));
+
+        if(bus.getPlacaBus() != null){
+            bus.setLatitudBus(bus1.getLatitudBus());
+            bus.setLongitudBus(bus1.getLongitudBus());
+
+            busDao.save(bus);
+
+            respuesta = "{'respuesta' : 'Se realizo actualizacion del Bus'}";
+        }
+
+        return respuesta;
+    }
 
 
     //Metodo buscar bus por identificacionUsu

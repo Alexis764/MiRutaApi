@@ -1,8 +1,10 @@
 package com.miruta.api.controladores;
 
 import com.miruta.api.entidades.Bus;
+import com.miruta.api.entidades.Usuario;
 import com.miruta.api.modelos.BusModelo;
 import com.miruta.api.servicios.BusesServiciolmpl;
+import jakarta.servlet.http.PushBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -59,5 +61,9 @@ public class BusControlador {
 
 
 
-
+    //Actualizar Bus
+    @PutMapping("/actualizar")
+    public String atualizarBusCon(@RequestBody Bus busS){
+        return busServicio.actualizarBus(busS);
+    }
 }

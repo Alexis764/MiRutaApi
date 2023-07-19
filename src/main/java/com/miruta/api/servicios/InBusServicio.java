@@ -21,7 +21,8 @@ public interface InBusServicio {
     //Metodo eliminar bus
     String eliminarBus(String placaBus);
 
-
+    //Metodo modificar bus
+    String actualizarBus(Bus bus);
 
     //Metodo buscar bus por identificacionUsu
     Optional<Bus> getBus(Long identificacionUsu);
