@@ -148,9 +148,17 @@ public class UsuarioServicioImpl implements InUsuarioServicio{
     public String guardarUsuario(Usuario usuario) {
         usuario.setContraseniaUsu(encryptContrasenia(usuario.getContraseniaUsu()));
         usuarioDao.save(usuario);
-        return "{\n" +
-                "\"registro\": true\n" +
+
+        // Obtener ID del Usuario creado recien
+        Long idUsu = usuario.getIdUsu();
+
+        // Creacion de JSON incluyendo el ID
+        String jsonResponse = "{\n" +
+                "\"registro\": true,\n" +
+                "\"idUsu\": " + idUsu + "\n" +
                 "}";
+        
+        return jsonResponse;
     }
 
 
